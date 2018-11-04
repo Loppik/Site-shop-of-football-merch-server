@@ -6,9 +6,10 @@ const userSchema = new mongoose.Schema({
     name: String,
     phone_number: Number,
     address: String,
-    email: String
+    email: String,
+    token: String,
   }, {
-    timestamps: true
+    timestamps: false
   });
   
 const User = mongoose.model('users', userSchema);

@@ -7,7 +7,7 @@ function findUserByLogin(login) {
 function insertUser(user) {
     let u = new User(user);
     u.save((err) => {
-        if (!err) console.log("++++") // TODO: error handler
+        // TODO: error handler
     })
     return {user};
 }

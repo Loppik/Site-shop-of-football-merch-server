@@ -6,7 +6,7 @@ const shoesSchema = new mongoose.Schema({
     type: String,
     price: Number,
   }, {
-    timestamps: true
+    timestamps: false
   });
   
 const Shoes = mongoose.model('shoes', shoesSchema);

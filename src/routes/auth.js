@@ -18,12 +18,11 @@ app.post('/reg', (req, res) => {
 app.post('/login', (req, res) => {
     let start = Date.now();
     login(req.body)
-        .then(({user, token}) => {
+        .then((user) => {
             let end = Date.now();
             console.log(`Time: ${end - start}`);
             res.send({
                 user,
-                token,
             })
         })
         .catch((err) => {

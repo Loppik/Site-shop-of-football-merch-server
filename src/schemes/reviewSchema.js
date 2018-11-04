@@ -4,7 +4,7 @@ const reviewSchema = new mongoose.Schema({
     login: String,
     text: String
   }, {
-    timestamps: true
+    timestamps: false
   });
   
 const Review = mongoose.model('reviews', reviewSchema);

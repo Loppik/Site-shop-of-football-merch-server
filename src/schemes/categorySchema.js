@@ -4,7 +4,7 @@ const categorySchema = new mongoose.Schema({
     name: String,
     routeName: String
 }, {
-    timestamps: true
+    timestamps: false
 });
 
 const Category = mongoose.model('category', categorySchema);

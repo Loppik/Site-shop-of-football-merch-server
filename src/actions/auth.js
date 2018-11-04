@@ -20,7 +20,10 @@ function login(data) {
     return validateLoginData(data).then(() => {
         return findUserByLogin(data.login).then((user) => user ? (
             bcrypt.compare(data.password, user.password).then((res) => res ? (
-                generateToken().then((token) => ({user, token}))
+                generateToken().then((token) => {
+                    user.token = token.token;
+                    return user;
+                })
             ) : (
                 Promise.reject('Incorrect password')
             ))
