@@ -2,7 +2,7 @@ const {findUserByLogin, insertUser} = require('../db/users');
 const {validateRegData} = require('../validation/reg');
 const {validateLoginData} = require('../validation/login')
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const jwtService = require('../jwtService');
 
 function registration(data) {
    return validateRegData(data).then(() => {
@@ -20,9 +20,12 @@ function login(data) {
     return validateLoginData(data).then(() => {
         return findUserByLogin(data.login).then((user) => user ? (
             bcrypt.compare(data.password, user.password).then((res) => res ? (
-                generateToken().then((token) => {
-                    user.token = token.token;
-                    return user;
+                jwtService.generateAcsRefTokens({userId: user._id}).then(({ accessToken, refreshToken }) => {
+                    jwtService.db.push({
+                        userId: user._id,
+                        refreshToken,
+                    });
+                    return { accessToken, refreshToken };
                 })
             ) : (
                 Promise.reject('Incorrect password')
@@ -35,16 +38,6 @@ function login(data) {
     })
     
 };
-
-function generateToken() {
-    return new Promise((response, reject) => {
-        jwt.sign({foo: 'bar'}, 'shhhhh', (err, token) => err ? (
-            reject('Token generation error')
-        ) : (
-            response({token})
-        ));
-    });
-}
 
 module.exports = {
     registration,

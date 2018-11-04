@@ -15,8 +15,6 @@ const config = require('../config');
 
 const app = express();
 
-const jwt = require('./jwt');
-
 const User = require('./schemes/userSchema');
 const Shoes = require('./schemes/shoesSchema');
 const Review = require('./schemes/reviewSchema');
