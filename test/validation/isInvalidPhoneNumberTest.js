@@ -1,5 +1,5 @@
 const assert = require('assert');
-const {isInvalidLogin, isInvalidPassword, isInvalidPhoneNumber} = require('../../src/validation/validation');
+const { isInvalidPhoneNumber } = require('../../src/validation/validation');
 
 describe('Тестирование правильности введного номера телефона (isInvalidPhoneNumber())', () => {
     it('нет поля номера телефона, ожидается строка "no phone number"', () => {

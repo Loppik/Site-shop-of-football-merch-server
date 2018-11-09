@@ -39,7 +39,7 @@ function isInvalidPhoneNumber(data) {
 
 function isInvalidName(data) {
     if (data.hasOwnProperty('name')) {
-        // let reg = new RegExp('^[a-zA-Z0-9_]*$');
+        // let reg = new RegExp('^[a-zA-Z]*$');
         if (data.name.length < 3 || data.name.length > 255) {
             return 'incorrect name length';
         }
@@ -61,7 +61,7 @@ function isInvalidEmail(data) {
 function isInvalidAddress(data) {
     if (data.hasOwnProperty('address')) {
         // TODO: regexp 
-        if (data.name.length < 5 || data.name.length > 255) {
+        if (data.address.length < 5 || data.address.length > 255) {
             return 'incorrect address length';
         }
     } else {
