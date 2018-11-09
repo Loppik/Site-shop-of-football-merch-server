@@ -13,4 +13,10 @@ describe('Тестирование правильности введного ema
         let err = isInvalidEmail(data);
         assert.equal(err, false);
     });
+
+    it('email без символа собаки(@), ожидается "no symbol @"', () => {
+      let data = {email: 'shantyr_ay_mail.ru'};
+      let err = isInvalidEmail(data);
+      assert.equal(err, 'no symbol @');
+  });
 });

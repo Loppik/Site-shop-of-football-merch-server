@@ -1,8 +1,11 @@
-function isInvalidLogin(data) {
+const isInvalidLogin = (data) => {
     if (data.hasOwnProperty('login')) {
-        // let reg = new RegExp('^[a-zA-Z0-9_]*$');
         if (data.login.length < 3 || data.login.length > 15) {
             return 'incorrect login length';
+        }
+        const regexp = new RegExp('^[a-zA-Z0-9_]*$');
+        if (data.login.search(regexp) == -1) {
+            return 'incorrect symbol in login';
         }
     } else {
         return 'no login';
@@ -10,11 +13,14 @@ function isInvalidLogin(data) {
     return false;
 }
 
-function isInvalidPassword(data) {
+const isInvalidPassword = (data) => {
     if (data.hasOwnProperty('password')) {
-        // let reg = new RegExp('^[a-zA-Z0-9_]*$');
         if (data.password.length < 3 || data.password.length > 15) {
             return 'incorrect password length';
+        }
+        const regexp = new RegExp('^[a-zA-Z0-9_]*$');
+        if (data.password.search(regexp) == -1) {
+            return 'incorrect symbol in password';
         }
     } else {
         return 'no password';
@@ -22,7 +28,7 @@ function isInvalidPassword(data) {
     return false;
 }
 
-function isInvalidPhoneNumber(data) {
+const isInvalidPhoneNumber = (data) => {
     if (data.hasOwnProperty('phoneNumber')) {
         if (data.phoneNumber.toString().length != 7) {
             return 'incorrect phone number length';
@@ -37,11 +43,14 @@ function isInvalidPhoneNumber(data) {
     return false;
 }
 
-function isInvalidName(data) {
+const isInvalidName = (data) => {
     if (data.hasOwnProperty('name')) {
-        // let reg = new RegExp('^[a-zA-Z]*$');
         if (data.name.length < 3 || data.name.length > 255) {
             return 'incorrect name length';
+        }
+        const regexp = new RegExp('^[a-zA-Z]*$');
+        if (data.name.search(regexp) == -1) {
+            return 'incorrect symbol in name';
         }
     } else {
         return 'no name';
@@ -49,18 +58,20 @@ function isInvalidName(data) {
     return false;
 }
 
-function isInvalidEmail(data) {
+const isInvalidEmail = (data) => {
     if (data.hasOwnProperty('email')) {
-        // TODO: regexp email
+        const regexp = new RegExp('@');
+        if (data.email.match(regexp) == null) {
+            return 'no symbol @';
+        }
     } else {
         return 'no email';
     }
     return false;
 }
 
-function isInvalidAddress(data) {
+const isInvalidAddress = (data) => {
     if (data.hasOwnProperty('address')) {
-        // TODO: regexp 
         if (data.address.length < 5 || data.address.length > 255) {
             return 'incorrect address length';
         }
