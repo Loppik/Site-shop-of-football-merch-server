@@ -8,7 +8,6 @@ app.use('/admin', require('./admin'));
 
 app.use((req, res, next) => {
   console.log("++++");
-  console.log(jwtService.db);
   const accessToken = req.get('Authorization');
   jwt.verify(accessToken, config.secret, (err, decoded) => {
     if (err) {

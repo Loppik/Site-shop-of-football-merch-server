@@ -2,6 +2,8 @@ const app = require('express')();
 const { registration, login } = require('../actions/auth');
 const jwtService = require('../jwtService');
 
+const { updateRefreshToken, getRefreshTokenByUserId } = require('../db/users');
+
 app.post('/reg', (req, res) => {
   console.log(req.body);
   registration(req.body)
@@ -31,38 +33,17 @@ app.post('/login', (req, res) => {
 
 app.post('/refresh', async (req, res) => {
   const refreshToken = req.get('Authorization');
-  /*
-  jwtService.db.forEach(async (user) => {
-    if (user.refreshToken === refreshToken) {
-      const { accessToken, refreshToken } = await jwtService.generateAcsRefTokens({ userId: user.userId });
-      jwtService.db.push({
-        userId: user.userId,
-        refreshToken,
-      });
-      try {
-        res.send({})
-      } catch(err) {
-        console.log(err)
-      }
-    }
-  })
-  */
- if (jwtService.db.length != 0) {
-  const user = jwtService.db[0];
-  if (user.refreshToken === refreshToken) {
-    const { accessToken, refreshToken } = await jwtService.generateAcsRefTokens({ userId: user.userId });
-    jwtService.db = [];
-      jwtService.db.push({
-        userId: user.userId,
-        refreshToken,
-      });
-      res.send({
-        accessToken, 
-        refreshToken,
-      })
+  const userId = req.body.userId;
+  const userRefreshToken = await getRefreshTokenByUserId(userId);
+  if (userRefreshToken.refreshToken === refreshToken) {
+    const { accessToken, refreshToken } = await jwtService.generateAcsRefTokens({ userId });
+    await updateRefreshToken(userId, refreshToken);
+    res.send({
+      accessToken,
+      refreshToken,
+    })
   }
-  jwtService.db = [];
- }
+  await updateRefreshToken(userId, "");
   res.send({ err: 'Relogin with login and password' })
 })
 

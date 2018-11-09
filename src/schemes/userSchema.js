@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
     phone_number: Number,
     address: String,
     email: String,
-    token: String,
+    refreshToken: String,
   }, {
     timestamps: false
   });

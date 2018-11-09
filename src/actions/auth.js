@@ -1,4 +1,4 @@
-const {findUserByLogin, insertUser} = require('../db/users');
+const {findUserByLogin, insertUser, updateRefreshToken } = require('../db/users');
 const {validateRegData} = require('../validation/reg');
 const {validateLoginData} = require('../validation/login')
 const bcrypt = require('bcrypt');
@@ -21,11 +21,7 @@ function login(data) {
         return findUserByLogin(data.login).then((user) => user ? (
             bcrypt.compare(data.password, user.password).then((res) => res ? (
                 jwtService.generateAcsRefTokens({userId: user._id}).then(({ accessToken, refreshToken }) => {
-                    jwtService.db.push({
-                        userId: user._id,
-                        refreshToken,
-                    });
-                    return { accessToken, refreshToken };
+                    return updateRefreshToken(user._id, refreshToken).then(res => ({ accessToken, refreshToken }));
                 })
             ) : (
                 Promise.reject('Incorrect password')
