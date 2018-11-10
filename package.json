@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/ server server",
+    "start": "set NODE_ENV=dev&& nodemon ./src/ server server",
     "debug": "nodemon --inspect ./src/",
-    "test": "mocha test/validation"
+    "test": "set NODE_ENV=test&& mocha test/actions --recursive"
   },
   "author": "",
   "license": "ISC",

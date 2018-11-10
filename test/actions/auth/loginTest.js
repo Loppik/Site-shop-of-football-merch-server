@@ -1,5 +1,5 @@
 const assert = require('assert');
-const {registration, login} = require('../../src/actions/auth');
+const {registration, login} = require('../../../src/actions/auth');
 
 describe('Тестирование авторизации (login())', () => {
     describe('Неккоректные данные авторизации', () => {

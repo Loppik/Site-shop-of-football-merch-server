@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
+const config = require('../config');
 
 mongoose.Promise = Promise;
-mongoose.set('debug', true);
+mongoose.set('debug', config.debug);
 
-mongoose.connect('mongodb://localhost/sportwear', (err) => {
+console.log('mongodb://' + config.database);
+
+mongoose.connect('mongodb://' + config.database, (err) => {
     
 });
 module.exports = mongoose;

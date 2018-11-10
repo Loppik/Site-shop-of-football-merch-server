@@ -1,6 +1,0 @@
-{
-    "secret": "QWERTYUIOPASDFGHJKLZXCVBNM",
-    "accessTokenLifetime": "30s",
-    "host": "localhost",
-    "port": "8081"
-}
