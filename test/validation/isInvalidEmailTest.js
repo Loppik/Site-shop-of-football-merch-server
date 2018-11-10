@@ -18,5 +18,5 @@ describe('Тестирование правильности введного ema
       let data = {email: 'shantyr_ay_mail.ru'};
       let err = isInvalidEmail(data);
       assert.equal(err, 'no symbol @');
-  });
+    });
 });

@@ -1,6 +1,6 @@
 const {isInvalidLogin, isInvalidPassword, isInvalidPhoneNumber, isInvalidName, isInvalidEmail, isInvalidAddress} = require('./validation');
 
-function validateRegData(data) {
+const isInvalidRegData = (data) => {
     return new Promise((resp, rej) => {
         let err = isInvalidLogin(data);
         if (err) rej(err);
@@ -22,10 +22,10 @@ function validateRegData(data) {
         err = isInvalidAddress(data);
         if (err) rej(err);
 
-        return resp(null);
+        return resp(false);
     });
 };
 
 module.exports = {
-    validateRegData
+    isInvalidRegData
 }
