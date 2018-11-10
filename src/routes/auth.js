@@ -8,7 +8,7 @@ app.post('/reg', (req, res) => {
   console.log(req.body);
   registration(req.body)
     .then((user) => {
-      res.send({})
+      res.send({ msg: 'Successful registration'})
     })
     .catch((err) => {
       res.send({ msg: 'Registration failed', err: err })
