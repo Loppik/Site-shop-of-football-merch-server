@@ -1,15 +1,19 @@
 const User = require('../schemes/userSchema');
 
-function findUserByLogin(login) {
+const findUserByLogin = (login) => {
   return User.findOne({ login: login });
 }
 
-function insertUser(user) {
+const insertUser = (user) => {
   let u = new User(user);
   u.save((err) => {
     // TODO: error handler
   })
   return { user };
+}
+
+const requestOnGetUserById = (userId) => {
+  return User.findById(userId);
 }
 
 updateRefreshToken = (userId, token) => {
@@ -23,6 +27,7 @@ getRefreshTokenByUserId = (userId) => {
 module.exports = {
   findUserByLogin,
   insertUser,
+  requestOnGetUserById,
   updateRefreshToken,
   getRefreshTokenByUserId,
 };
