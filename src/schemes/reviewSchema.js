@@ -1,6 +1,7 @@
 const mongoose = require('../mongoose');
 
 const reviewSchema = new mongoose.Schema({
+    shoesId: String,
     login: String,
     text: String
   }, {

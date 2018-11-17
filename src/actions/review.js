@@ -8,7 +8,10 @@ const getReviewByShoesId = shoesId => {
     ))
 }
 
-const addReview = review => reviewRequest.requestOnAddReview(review)
+const addReview = review => {
+    console.log(review);
+    return reviewRequest.requestOnAddReview(review)
+}
 
 module.exports = {
     getReviewByShoesId,

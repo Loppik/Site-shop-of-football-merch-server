@@ -5,7 +5,7 @@ const jwtService = require('../jwtService');
 
 app.use('/auth', require('./auth'));
 app.use('/admin', require('./admin'));
-
+/*
 app.use((req, res, next) => {
   console.log("++++");
   const accessToken = req.get('Authorization');
@@ -17,7 +17,7 @@ app.use((req, res, next) => {
   })
   next();
 });
-
+*/
 app.use('/products', require('./products'));
 app.use('/review', require('./review'));
 app.use('/sizes', require('./sizes'));

@@ -32,7 +32,7 @@ app.use(morgan('combined'));
 
 app.use(routes);
 
-app.listen(config.port, config.host, () => {
+app.listen(config.port, () => {
   console.log(`listening on http://${config.host}:${config.port}`);
 });
 
