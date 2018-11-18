@@ -1,5 +1,5 @@
 const app = require('express')();
-const {getAllShoesOfOneType, getShoesById, getCategories} = require('../actions/products');
+const { getAllShoesOfOneType, getShoesById } = require('../actions/products');
 
 app.get('/fb', (req, res) => {
     getAllShoesOfOneType('FootballBoots')
@@ -46,18 +46,6 @@ app.get('/:id', (req, res) => {
         })
         .catch((err) => {
             res.send({err})
-        })
-})
-
-app.get('/', (req, res) => {
-    getCategories()
-        .then((categories) => {
-            res.send({
-                categories
-            });
-        })
-        .catch((err) => {
-            res.send({err});
         })
 })
 

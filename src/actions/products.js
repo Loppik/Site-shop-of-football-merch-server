@@ -1,6 +1,6 @@
-const {requestOnGetAllShoesOfOneType, requestOnAddNewShoes, requestOnGetAllShoes, requestOnGetShoesById, requestOnGetCategories} = require('../db/products');
+const { requestOnGetAllShoesOfOneType, requestOnAddNewShoes, requestOnGetAllShoes, requestOnGetShoesById } = require('../db/products');
 
-function getAllShoesOfOneType(type) {
+const getAllShoesOfOneType = (type) => {
     return requestOnGetAllShoesOfOneType(type).then((shoes) => shoes.length > 0 ? (
         {shoes}
     ): (
@@ -8,13 +8,13 @@ function getAllShoesOfOneType(type) {
     ));
 }
 
-function addNewShoes(shoes) {
+const addNewShoes = (shoes) => {
     return requestOnAddNewShoes(shoes).then((shoes) => {
         return {shoes};
     });
 }
 
-function getAllShoes() {
+const getAllShoes = () => {
     return requestOnGetAllShoes().then((shoes) => shoes.length > 0 ? (
         {shoes}
     ) : (
@@ -22,7 +22,7 @@ function getAllShoes() {
     ));
 }
 
-function getShoesById(id) {
+const getShoesById = (id) => {
     return requestOnGetShoesById(id).then((shoes) => shoes ? (
         {shoes}
     ) : (
@@ -30,18 +30,9 @@ function getShoesById(id) {
     ))
 }
 
-function getCategories() {
-    return requestOnGetCategories().then((categories) => categories ? (
-        categories
-     ) : (
-         Promise.reject('no categories')
-     ))
-}
-
 module.exports = {
     getAllShoesOfOneType,
     addNewShoes,
     getAllShoes,
     getShoesById,
-    getCategories
 }

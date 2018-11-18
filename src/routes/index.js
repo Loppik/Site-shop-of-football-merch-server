@@ -1,14 +1,13 @@
 const app = require('express')();
 const jwt = require('jsonwebtoken');
 const config = require('../../config');
-const jwtService = require('../jwtService');
 
 app.use('/auth', require('./auth'));
 app.use('/admin', require('./admin'));
 
 app.use((req, res, next) => {
   const accessToken = req.get('Authorization');
-  jwt.verify(accessToken, config.secret, (err, decoded) => {
+  jwt.verify(accessToken, config.secret, (err, decoded) => { // create verify in jwtService
     if (err) {
       res.status(401).send({ err:  err.name })
     }
@@ -17,6 +16,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('/categories', require('./categories'));
 app.use('/products', require('./products'));
 app.use('/review', require('./review'));
 app.use('/sizes', require('./sizes'));

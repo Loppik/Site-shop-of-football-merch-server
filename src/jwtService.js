@@ -16,7 +16,7 @@ generateRefreshToken = () => {
     return uuid();
 }
 
-async function generateAcsRefTokens(data) {
+const generateAcsRefTokens = async (data) => {
     const accessToken = await generateAccessToken(data);
     const refreshToken = generateRefreshToken();
     return { accessToken, refreshToken };
