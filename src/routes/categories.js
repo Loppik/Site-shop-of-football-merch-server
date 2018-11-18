@@ -1,5 +1,5 @@
 const app = require('express')();
-const {  } = require('../actions/categories');
+const { getCategories } = require('../actions/categories');
 
 app.get('/', (req, res) => {
   getCategories()
