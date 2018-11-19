@@ -1,21 +1,29 @@
 const reviewRequest = require('../db/review');
-const { requestOnGetUserById } = require('../db/users');
+const { requestOnGetUserById, findUserByLogin } = require('../db/users');
+const guestRequest = require('../db/guests');
 
 const getReviewByShoesId = shoesId => {
-    return reviewRequest.requestOnGetReviewsByShoesId(shoesId).then((reviews) => reviews.length != 0 ? (
-        reviews
-    ) : (
-        Promise.reject('no reviews')
+  return reviewRequest.requestOnGetReviewsByShoesId(shoesId).then((reviews) => reviews.length != 0 ? (
+    reviews
+  ) : (
+      Promise.reject('no reviews')
     ))
 }
 
 const addReview = async review => {
-    let user = await requestOnGetUserById(review.userId);
+  if (review.userId) {
+    const user = await requestOnGetUserById(review.userId);
     review.login = user.login;
-    return reviewRequest.requestOnAddReview(review);
+  } else {
+    const guest = await guestRequest.getGuest();
+    console.log(guest);
+    review.login = guest.login + guest.number;
+    await guestRequest.updateGuestNumber(guest.number + 1);
+  }
+  return reviewRequest.requestOnAddReview(review);
 }
 
 module.exports = {
-    getReviewByShoesId,
-    addReview,
+  getReviewByShoesId,
+  addReview,
 }
