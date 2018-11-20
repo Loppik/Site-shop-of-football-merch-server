@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/categories', require('./categories'));
-app.use('/products', require('./products'));
+app.use('/shoes', require('./shoes'));
 app.use('/review', require('./review'));
 app.use('/sizes', require('./sizes'));
 app.use('/images', require('./images'));

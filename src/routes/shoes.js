@@ -1,5 +1,5 @@
 const app = require('express')();
-const { getAllShoesOfOneType, getShoesById } = require('../actions/products');
+const { getAllShoesOfOneType, getShoesById } = require('../actions/shoes');
 
 app.get('/fb', (req, res) => {
     getAllShoesOfOneType('FootballBoots')

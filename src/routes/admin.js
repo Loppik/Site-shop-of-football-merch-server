@@ -1,5 +1,5 @@
 const app = require('express')();
-const {addNewShoes, getAllShoes} = require('../actions/products')
+const {addNewShoes, getAllShoes} = require('../actions/shoes')
 
 app.post('/addShoes', (req, res) => {
     addNewShoes(req.body)
