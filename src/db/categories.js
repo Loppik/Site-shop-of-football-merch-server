@@ -1,9 +1,14 @@
 const Category = require('../schemes/categorySchema');
 
-const requestOnGetCategories = () => {
+const getCategories = () => {
   return Category.find({});
 }
 
+const addCategory = (category) => {
+  return new Category(category).save();
+}
+
 module.exports = {
-  requestOnGetCategories,
+  getCategories,
+  addCategory,
 }
