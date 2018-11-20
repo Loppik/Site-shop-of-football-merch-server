@@ -18,7 +18,11 @@ const addCategory = (category) => {
   })
 }
 
+const deleteCategory = (categoryName) => categoryRequest.deleteCategory(categoryName);
+
+
 module.exports = { 
   getCategories,
   addCategory,
+  deleteCategory,
 };

@@ -1,5 +1,5 @@
 const app = require('express')();
-const { getCategories, addCategory } = require('../actions/categories');
+const { getCategories, addCategory, deleteCategory } = require('../actions/categories');
 
 app.get('/', (req, res) => {
   getCategories()
@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
     })
 })
 
-app.post('/add', (req, res) => {
+app.post('/', (req, res) => {
   addCategory(req.body)
     .then((category) => {
       res.send({});
@@ -22,5 +22,15 @@ app.post('/add', (req, res) => {
       res.send({ err });
     })
 });
+
+app.delete('/', (req, res) => {
+  deleteCategory(req.body.name)
+    .then((category) => {
+      res.send({});
+    })
+    .catch((err) => {
+      res.send({ err })
+    })
+})
 
 module.exports = app;
