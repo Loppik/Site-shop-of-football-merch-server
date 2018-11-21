@@ -1,5 +1,5 @@
 const app = require('express')();
-const { getAllShoesOfOneType, getShoesById, addShoes } = require('../actions/shoes');
+const { getAllShoesOfOneType, getShoesById, addShoes, deleteShoesById } = require('../actions/shoes');
 
 app.get('/fb', (req, res) => {
   getAllShoesOfOneType('FootballBoots')
@@ -60,7 +60,13 @@ app.post('/', (req, res) => {
 })
 
 app.delete('/', (req, res) => {
-  
+  deleteShoesById(req.body.shoesId)
+    .then((shoes) => {
+      res.send({})
+    })
+    .catch((err) => {
+      res.status(500).send({ err })
+    })
 })
 
 

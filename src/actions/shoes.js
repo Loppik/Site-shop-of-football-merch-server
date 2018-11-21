@@ -33,4 +33,5 @@ module.exports = {
   addShoes,
   getAllShoes,
   getShoesById,
+  deleteShoesById,
 }
