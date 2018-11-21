@@ -1,5 +1,5 @@
 const categoryRequest = require('../db/categories');
-const { isInvalidCategory } = require('../validation/category');
+const categoryValidation = require('../validation/category');
 
 const getCategories = () => {
   return categoryRequest.getCategories().then((categories) => categories ? (
@@ -10,7 +10,7 @@ const getCategories = () => {
 }
 
 const addCategory = (category) => {
-  return isInvalidCategory(category).then(() => {
+  return categoryValidation.isInvalidCategory(category).then(() => {
     category.routeName = category.name.replace(/\s/g, '');
     return categoryRequest.addCategory(category);
   }, (err) => {
