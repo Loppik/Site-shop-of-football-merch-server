@@ -9,7 +9,7 @@ const registration = (data) => {
     return findUserByLogin(data.login).then(async (user) => user ? (
       Promise.reject('This login already exist')
     ) : (
-        insertUser({ ...data, password: await new Promise((resolve) => bcrypt.hash(data.password, 10, (_, hash) => resolve(hash))) })
+        insertUser({ ...data, password: await bcrypt.hash(data.password, 10) })
       ));
   }, (err) => {
     return Promise.reject(err);
