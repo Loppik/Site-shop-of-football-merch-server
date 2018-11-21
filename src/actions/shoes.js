@@ -28,10 +28,13 @@ const getShoesById = (id) => {
 
 const deleteShoesById = id => shoesRequest.deleteShoesById(id);
 
+const updateShoesById = shoes => shoesRequest.updateShoesById(shoes);
+
 module.exports = {
   getAllShoesOfOneType,
   addShoes,
   getAllShoes,
   getShoesById,
   deleteShoesById,
+  updateShoesById,
 }
