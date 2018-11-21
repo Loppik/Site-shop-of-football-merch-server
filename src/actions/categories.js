@@ -18,11 +18,14 @@ const addCategory = (category) => {
   })
 }
 
-const deleteCategory = (categoryName) => categoryRequest.deleteCategory(categoryName);
+const deleteCategory = categoryName => categoryRequest.deleteCategory(categoryName);
+
+const updateCategoryById = category => categoryRequest.updateCategoryById(category);
 
 
 module.exports = { 
   getCategories,
   addCategory,
   deleteCategory,
+  updateCategoryById,
 };

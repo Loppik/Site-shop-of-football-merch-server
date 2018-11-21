@@ -1,5 +1,5 @@
 const app = require('express')();
-const { getCategories, addCategory, deleteCategory } = require('../actions/categories');
+const { getCategories, addCategory, deleteCategory, updateCategoryById } = require('../actions/categories');
 
 app.get('/', (req, res) => {
   getCategories()
@@ -30,6 +30,16 @@ app.delete('/', (req, res) => {
     })
     .catch((err) => {
       res.send({ err })
+    })
+})
+
+app.put('/', (req, res) => {
+  updateCategoryById(req.body)
+    .then((category) => {
+      res.send({});
+    })
+    .catch((err) => {
+      res.status(500).send({ err });
     })
 })
 
