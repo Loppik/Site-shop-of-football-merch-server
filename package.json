@@ -6,7 +6,7 @@
   "scripts": {
     "start": "set NODE_ENV=dev&& nodemon ./src/ server server",
     "debug": "nodemon --inspect ./src/",
-    "test": "set NODE_ENV=test&& mocha test/validation/category --recursive"
+    "test": "set NODE_ENV=test&& mocha test/actions/categories --recursive"
   },
   "author": "",
   "license": "ISC",
@@ -27,6 +27,7 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "sinon": "^7.1.1",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
