@@ -23,5 +23,6 @@ app.use('/shoes', require('./shoes'));
 app.use('/review', require('./review'));
 app.use('/sizes', require('./sizes'));
 app.use('/images', require('./images'));
+app.use('/users', require('./users'));
 
 module.exports = app;

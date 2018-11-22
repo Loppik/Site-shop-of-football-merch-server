@@ -12,7 +12,7 @@ const insertUser = (user) => {
   return { user };
 }
 
-const requestOnGetUserById = (userId) => {
+const getUserById = (userId) => {
   return User.findById(userId);
 }
 
@@ -27,7 +27,7 @@ getRefreshTokenByUserId = (userId) => {
 module.exports = {
   findUserByLogin,
   insertUser,
-  requestOnGetUserById,
+  getUserById,
   updateRefreshToken,
   getRefreshTokenByUserId,
 };

@@ -1,5 +1,5 @@
 const reviewRequest = require('../db/review');
-const { requestOnGetUserById, findUserByLogin } = require('../db/users');
+const userRequest = require('../db/users');
 const guestRequest = require('../db/guests');
 
 const getReviewByShoesId = shoesId => {
@@ -12,7 +12,7 @@ const getReviewByShoesId = shoesId => {
 
 const addReview = async review => {
   if (review.userId) {
-    const user = await requestOnGetUserById(review.userId);
+    const user = await userRequest.getUserById(review.userId);
     review.login = user.login;
   } else {
     const guest = await guestRequest.getGuest();

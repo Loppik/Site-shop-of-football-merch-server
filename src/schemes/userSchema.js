@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
     phone_number: Number,
     address: String,
     email: String,
+    admin: Boolean,
     refreshToken: String,
   }, {
     timestamps: false
