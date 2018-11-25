@@ -1,14 +1,6 @@
 const categoryRequest = require('../db/category-db');
 const categoryValidation = require('../../../validation/category');
 
-const getCategories = () => {
-  return categoryRequest.getCategories().then((categories) => categories ? (
-    categories
-  ) : (
-      Promise.reject('no categories')
-    ))
-}
-
 const addCategory = (category) => {
   return categoryValidation.isInvalidCategory(category).then(() => {
     category.routeName = category.name.replace(/\s/g, '');
@@ -18,14 +10,6 @@ const addCategory = (category) => {
   })
 }
 
-const deleteCategory = categoryName => categoryRequest.deleteCategory(categoryName);
-
-const updateCategoryById = category => categoryRequest.updateCategoryById(category);
-
-
-module.exports = { 
-  getCategories,
+module.exports = {
   addCategory,
-  deleteCategory,
-  updateCategoryById,
 };

@@ -7,12 +7,12 @@ const getUserById = (req, res) => {
         login: user.login,
         admin: user.admin
       });
-    }) 
+    })
     .catch((err) => {
       res.status(500).send({ err })
     })
 };
 
 module.exports = {
-    getUserById,
+  getUserById,
 }

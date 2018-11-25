@@ -1,8 +1,8 @@
-const shoesService = require('../services/shoes-service');
+const shoesRequest = require('../db/shoes-db');
 
 
 const getAllShoesOfOneType = (req, res) => {
-    shoesService.getAllShoesOfOneType('ForRun')
+  shoesRequest.getAllShoesOfOneType('ForRun')
     .then((shoes) => {
       res.send({
         shoes: shoes.shoes,
@@ -14,7 +14,7 @@ const getAllShoesOfOneType = (req, res) => {
 };
 
 const getShoesById = (req, res) => {
-    shoesService.getShoesById(req.params.id)
+  shoesRequest.getShoesById(req.params.id)
     .then((shoes) => {
       res.send({
         shoes: shoes.shoes
@@ -25,8 +25,8 @@ const getShoesById = (req, res) => {
     })
 };
 
-const addShoes =  (req, res) => {
-    shoesService.addShoes(req.body)
+const addShoes = (req, res) => {
+  shoesRequest.addShoes(req.body)
     .then((shoes) => {
       res.send({})
     })
@@ -36,7 +36,7 @@ const addShoes =  (req, res) => {
 };
 
 const deleteShoesById = (req, res) => {
-    shoesService.deleteShoesById(req.body.shoesId)
+  shoesRequest.deleteShoesById(req.body.shoesId)
     .then((shoes) => {
       res.send({})
     })
@@ -46,7 +46,7 @@ const deleteShoesById = (req, res) => {
 };
 
 const updateShoesById = (req, res) => {
-    shoesService.updateShoesById(req.body)
+  shoesRequest.updateShoesById(req.body)
     .then((shoes) => {
       res.send({})
     })
@@ -56,24 +56,24 @@ const updateShoesById = (req, res) => {
 };
 
 const getAllShoes = (req, res) => {
-    shoesService.getAllShoes()
-        .then((shoes) => {
-        res.send({
+  shoesRequest.getAllShoes()
+    .then((shoes) => {
+      res.send({
         shoes
-    });
-})
-.catch((err) => {
-        res.send({msg: err});
-})
+      });
+    })
+    .catch((err) => {
+      res.send({ msg: err });
+    })
 };
 
 
 module.exports = {
   getAllShoesOfOneType,
-    getShoesById,
-    addShoes,
-    deleteShoesById,
-    updateShoesById,
-    addShoes,
-    getAllShoes,
+  getShoesById,
+  addShoes,
+  deleteShoesById,
+  updateShoesById,
+  addShoes,
+  getAllShoes,
 }

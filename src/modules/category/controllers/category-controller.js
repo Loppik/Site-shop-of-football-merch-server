@@ -1,7 +1,8 @@
 const categoryService = require('../services/category-service');
+const categoryRequest = require('../db/category-db');
 
 const getCategories = (req, res) => {
-    categoryService.getCategories()
+  categoryRequest.getCategories()
     .then((categories) => {
       res.send({
         categories
@@ -13,7 +14,7 @@ const getCategories = (req, res) => {
 };
 
 const addCategory = (req, res) => {
-    categoryService.addCategory(req.body)
+  categoryService.addCategory(req.body)
     .then((category) => {
       res.send({});
     })
@@ -23,7 +24,7 @@ const addCategory = (req, res) => {
 };
 
 const deleteCategory = (req, res) => {
-    categoryService.deleteCategory(req.body.name)
+  categoryRequest.deleteCategory(req.body.name)
     .then((category) => {
       res.send({});
     })
@@ -33,7 +34,7 @@ const deleteCategory = (req, res) => {
 };
 
 const updateCaregoryById = (req, res) => {
-    categoryService.updateCategoryById(req.body)
+  categoryRequest.updateCategoryById(req.body)
     .then((category) => {
       res.send({});
     })

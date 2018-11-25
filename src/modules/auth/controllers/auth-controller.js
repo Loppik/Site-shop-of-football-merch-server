@@ -1,13 +1,13 @@
 const authService = require('../services/auth-service');
 const jwtService = require('../../../jwtService');
 
-const { updateRefreshToken, getRefreshTokenByUserId } = require('../../user/db/user-db');
+const tokenRequest = require('../db/token-db');
 
 const registration = (req, res) => {
   console.log(req.body);
   authService.registration(req.body)
     .then((user) => {
-      res.send({ msg: 'Successful registration'})
+      res.send({ msg: 'Successful registration' })
     })
     .catch((err) => {
       res.send({ msg: 'Registration failed', err: err })
@@ -33,16 +33,16 @@ const login = (req, res) => {
 const refreshToken = async (req, res) => {
   const refreshToken = req.get('Authorization');
   const userId = req.body.userId;
-  const userRefreshToken = await getRefreshTokenByUserId(userId);
+  const userRefreshToken = await tokenRequest.getRefreshTokenByUserId(userId);
   if (userRefreshToken.refreshToken === refreshToken) {
     const { accessToken, refreshToken } = await jwtService.generateAcsRefTokens({ userId });
-    await updateRefreshToken(userId, refreshToken);
+    await tokenRequest.updateRefreshToken(userId, refreshToken);
     res.send({
       accessToken,
       refreshToken,
     })
   }
-  await updateRefreshToken(userId, "");
+  await tokenRequest.updateRefreshToken(userId, "");
   res.send({ err: 'Relogin with login and password' })
 };
 

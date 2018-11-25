@@ -2,14 +2,6 @@ const reviewRequest = require('../db/review-db');
 const userRequest = require('../../user/db/user-db');
 const guestRequest = require('../../user/db/guest-db');
 
-const getReviewByShoesId = shoesId => {
-  return reviewRequest.requestOnGetReviewsByShoesId(shoesId).then((reviews) => reviews.length != 0 ? (
-    reviews
-  ) : (
-      Promise.reject('no reviews')
-    ))
-}
-
 const addReview = async review => {
   if (review.userId) {
     const user = await userRequest.getUserById(review.userId);
@@ -24,6 +16,5 @@ const addReview = async review => {
 }
 
 module.exports = {
-  getReviewByShoesId,
   addReview,
 }
