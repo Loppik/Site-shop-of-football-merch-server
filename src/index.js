@@ -19,7 +19,7 @@ const User = require('./schemes/userSchema');
 const Shoes = require('./schemes/shoesSchema');
 const Review = require('./schemes/reviewSchema');
 
-const routes = require('../src/routes');
+const routes = require('./modules/index');
 
 //app.use(errorHandler);
 

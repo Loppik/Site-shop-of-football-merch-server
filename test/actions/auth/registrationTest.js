@@ -1,5 +1,5 @@
 const assert = require('assert');
-const {registration, login} = require('../../../src/actions/auth');
+const {registration, login} = require('../../../src/modules/auth/services/auth-service');
 
 describe('Тестирование регистрации (registration())', () => {
     describe('Некорректные данные регистрации', () => {
