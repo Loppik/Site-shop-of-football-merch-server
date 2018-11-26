@@ -9,7 +9,7 @@ const getReviewByShoesId = (req, res) => {
       });
     })
     .catch((err) => {
-      res.send({ err });
+      res.status(500).send({ err });
     })
 };
 
@@ -21,7 +21,7 @@ const addReview = (req, res) => {
       })
     })
     .catch(err => {
-      res.send({ err })
+      res.status(500).send({ err })
     })
 };
 
