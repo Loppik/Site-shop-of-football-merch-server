@@ -16,7 +16,9 @@ app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
-app.use(morgan('combined'));
+if (app.get('env') == 'dev') {
+  app.use(morgan('combined'));
+}
 
 app.use(routes);
 
