@@ -8,7 +8,6 @@ const addReview = async review => {
     review.login = user.login;
   } else {
     const guest = await guestRequest.getGuest();
-    console.log(guest);
     review.login = guest.login + guest.number;
     await guestRequest.updateGuestNumber(guest.number + 1);
   }
