@@ -1,7 +1,7 @@
 const assert = require('assert');
 const { areObjectFieldsAvailable } = require('../../../src/validation/category');
 
-describe.only('Тестирование наличия всех необходимых полей категории (areObjectFieldsAvailable())', () => {
+describe('Тестирование наличия всех необходимых полей категории (areObjectFieldsAvailable())', () => {
   it('наличие всех необходимых полей категории, ожидается false', () => {
     let data = { name: 'Futzal' };
     let err = areObjectFieldsAvailable(data);
