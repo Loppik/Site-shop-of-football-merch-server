@@ -1,4 +1,5 @@
-const { findUserByLogin, insertUser, updateRefreshToken } = require('../../user/db/user-db');
+const { findUserByLogin, insertUser } = require('../../user/db/user-db');
+const { updateRefreshToken } = require('../db/token-db');
 const { isInvalidRegData } = require('../../../validation/reg');
 const { isInvalidLoginData } = require('../../../validation/login')
 const bcrypt = require('bcrypt');

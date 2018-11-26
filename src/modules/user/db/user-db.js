@@ -6,8 +6,11 @@ const insertUser = user => new User(user).save();
 
 const getUserById = userId => User.findById(userId);
 
+const deleteUserByLogin = login => User.deleteOne({ login: login });
+
 module.exports = {
   findUserByLogin,
   insertUser,
   getUserById,
+  deleteUserByLogin,
 };
