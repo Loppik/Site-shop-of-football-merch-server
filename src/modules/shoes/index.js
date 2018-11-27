@@ -8,6 +8,6 @@ app.get('/:id', shoesController.getShoesById);
 app.post('/', shoesController.addShoes);
 app.delete('/', shoesController.deleteShoesById);
 app.put('/', shoesController.updateShoesById);
-app.get('/allShoes', shoesController.getAllShoes);
+app.get('/', shoesController.getAllShoes);
 
 module.exports = app;

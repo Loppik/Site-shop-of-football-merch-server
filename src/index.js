@@ -36,5 +36,4 @@ app.listen(config.port, () => {
   console.log(`listening on http://${config.host}:${config.port}`);
 });
 
-
-
+module.exports = app; 

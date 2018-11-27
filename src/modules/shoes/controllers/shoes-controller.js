@@ -4,24 +4,20 @@ const shoesRequest = require('../db/shoes-db');
 const getAllShoesOfOneType = (req, res) => {
   shoesRequest.getAllShoesOfOneType('ForRun')
     .then((shoes) => {
-      res.send({
-        shoes: shoes.shoes,
-      })
+      res.send({ shoes })
     })
     .catch((err) => {
-      res.send({ msg: err, err: 'No shoes for run' })
+      res.status(500).send({ err });
     });
 };
 
 const getShoesById = (req, res) => {
   shoesRequest.getShoesById(req.params.id)
     .then((shoes) => {
-      res.send({
-        shoes: shoes.shoes
-      })
+      res.send({ shoes })
     })
     .catch((err) => {
-      res.send({ err })
+      res.status(500).send({ err })
     })
 };
 
@@ -58,12 +54,10 @@ const updateShoesById = (req, res) => {
 const getAllShoes = (req, res) => {
   shoesRequest.getAllShoes()
     .then((shoes) => {
-      res.send({
-        shoes
-      });
+      res.send({ shoes });
     })
     .catch((err) => {
-      res.send({ msg: err });
+      res.send({ err });
     })
 };
 
