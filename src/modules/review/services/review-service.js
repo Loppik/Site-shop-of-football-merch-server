@@ -11,7 +11,7 @@ const addReview = async review => {
     review.login = guest.login + guest.number;
     await guestRequest.updateGuestNumber(guest.number + 1);
   }
-  return reviewRequest.requestOnAddReview(review);
+  return reviewRequest.addReview(review);
 }
 
 module.exports = {
