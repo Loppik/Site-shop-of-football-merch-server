@@ -24,7 +24,7 @@ describe('Добавление отзыва', () => {
       }
       guestRequestMock.expects('getGuest').returns(Promise.resolve(guest));
       guestRequestMock.expects('updateGuestNumber').returns(Promise.resolve({}));
-      reviewRequestMock.expects('requestOnAddReview').returns(Promise.resolve(reviewOutput));
+      reviewRequestMock.expects('addReview').returns(Promise.resolve(reviewOutput));
       const res = await reviewService.addReview(reviewInput);
       assert.deepEqual(res, reviewOutput);
     })
@@ -44,7 +44,7 @@ describe('Добавление отзыва', () => {
       }
       
       userRequestMock.expects('getUserById').returns(Promise.resolve(user));
-      reviewRequestMock.expects('requestOnAddReview').returns(Promise.resolve(reviewOutput));
+      reviewRequestMock.expects('addReview').returns(Promise.resolve(reviewOutput));
       const res = await reviewService.addReview(reviewInput);
       assert.deepEqual(res, reviewOutput);
     })

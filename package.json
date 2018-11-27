@@ -6,7 +6,7 @@
   "scripts": {
     "start": "set NODE_ENV=dev&& nodemon ./src/ server server",
     "debug": "nodemon --inspect ./src/",
-    "test": "set NODE_ENV=test&& mocha test/modules/user --recursive"
+    "test": "set NODE_ENV=test&& mocha test/actions/review/controllers --recursive"
   },
   "author": "",
   "license": "ISC",
