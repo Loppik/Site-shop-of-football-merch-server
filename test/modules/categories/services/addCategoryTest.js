@@ -1,8 +1,8 @@
 const assert = require('assert');
 const sinon = require('sinon');
-const { addCategory } = require('../../../src/modules/category/services/category-service');
-const categoryValidation = require('../../../src/validation/category');
-const categoryRequest = require('../../../src/modules/category/db/category-db');
+const { addCategory } = require('../../../../src/modules/category/services/category-service');
+const categoryValidation = require('../../../../src/validation/category');
+const categoryRequest = require('../../../../src/modules/category/db/category-db');
 
 const categoryRequestMock = sinon.mock(categoryRequest);
 const categoryValidationMock = sinon.mock(categoryValidation);

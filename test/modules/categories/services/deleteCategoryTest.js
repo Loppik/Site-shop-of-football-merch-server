@@ -1,7 +1,7 @@
 const assert = require('assert');
 const sinon = require('sinon');
-const { deleteCategory } = require('../../../src/modules/category/controllers/category-controller');
-const categoryRequest = require('../../../src/modules/category/db/category-db');
+const { deleteCategory } = require('../../../../src/modules/category/controllers/category-controller');
+const categoryRequest = require('../../../../src/modules/category/db/category-db');
 
 const categoryRequestMock = sinon.mock(categoryRequest);
 
