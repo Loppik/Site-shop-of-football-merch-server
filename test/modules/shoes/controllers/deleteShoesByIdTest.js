@@ -5,13 +5,14 @@ chai.use(chaiHttp);
 const expect = chai.expect;
 const should = chai.should();
 const server = require('../../../../src/index');
+const assert = require('assert')
 
 const shoesRequest = require('../../../../src/modules/shoes/db/shoes-db');
 
 const shoesRequestMock = sinon.mock(shoesRequest);
 
 describe('Тестирование удаления обуви', () => {
-  it('успешное удаление обуви, ожидается пустой объект', () => {
+  it('успешное удаление обуви, ожидается пустой объект', (done) => {
     const shoesId = '23feew4235';
     const shoes = {
       shoesId,
@@ -21,23 +22,26 @@ describe('Тестирование удаления обуви', () => {
       type: 'fb',
     }
 
-    shoesRequestMock.expects('deleteShoesById').returns(Promise.resolve(shoes));
+    shoesRequestMock.expects('deleteShoesById').resolves(shoes);
 
     chai.request(server)
-      .delete('/shoes/')
+      .delete('/shoes/' + shoesId)
       .end((err, res) => {
         res.should.have.status(200);
         expect(res.body).to.be.empty;
+        done();
       })
   })
 
-  it('неуспешное удаление обуви, ожидается объект ошибки', () => {
-    shoesRequestMock.expects('deleteShoesById').returns(Promise.reject('db error'));
+  it('неуспешное удаление обуви, ожидается объект ошибки', (done) => {
+    const shoesId = '23feew4235';
+    shoesRequestMock.expects('deleteShoesById').rejects('db error');
     chai.request(server)
-      .delete('/shoes/')
+      .delete('/shoes/' + shoesId)
       .end((err, res) => {
         res.should.have.status(500);
         res.body.should.have.property('err');
+        done();
       })
   })
 });
