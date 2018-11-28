@@ -57,7 +57,7 @@ const getAllShoes = (req, res) => {
       res.send({ shoes });
     })
     .catch((err) => {
-      res.send({ err });
+      res.status(500).send({ err });
     })
 };
 
