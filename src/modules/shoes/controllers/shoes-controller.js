@@ -32,7 +32,7 @@ const addShoes = (req, res) => {
 };
 
 const deleteShoesById = (req, res) => {
-  shoesRequest.deleteShoesById(req.body.shoesId)
+  shoesRequest.deleteShoesById(req.params.shoesId)
     .then((shoes) => {
       res.send({})
     })
