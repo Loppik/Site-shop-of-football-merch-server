@@ -22,7 +22,7 @@ const addCategory = (req, res) => {
 };
 
 const deleteCategory = (req, res) => {
-  categoryRequest.deleteCategory(req.body.name)
+  categoryRequest.deleteCategory(req.params.categoryId)
     .then((category) => {
       res.send({});
     })
