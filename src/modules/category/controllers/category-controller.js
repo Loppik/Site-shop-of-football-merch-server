@@ -11,6 +11,16 @@ const getCategories = (req, res) => {
     })
 };
 
+const getCategory = (req, res) => {
+  categoryRequest.getCategory(req.params.categoryId)
+    .then((category) => {
+      res.send({ category });
+    })
+    .catch((err) => {
+      res.status(500).send({ err });
+    })
+}
+
 const addCategory = (req, res) => {
   categoryService.addCategory(req.body)
     .then((category) => {
@@ -43,6 +53,7 @@ const updateCaregoryById = (req, res) => {
 
 module.exports = {
   getCategories,
+  getCategory,
   addCategory,
   deleteCategory,
   updateCaregoryById,
