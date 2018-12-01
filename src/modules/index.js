@@ -24,5 +24,6 @@ app.use('/review', require('./review'));
 app.use('/sizes', require('./size'));
 app.use('/images', require('./image'));
 app.use('/users', require('./user'));
+app.use('/orders', require('./order'));
 
 module.exports = app;
