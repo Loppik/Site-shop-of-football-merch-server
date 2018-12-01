@@ -1,8 +1,7 @@
-const sizeRequest = require('../db/size-db');
 const sizeService = require('../services/size-service');
 
 const getSizesByShoesId = (req, res) => {
-  sizeRequest.getSizesByShoesId(req.params.shoesId)
+  sizeService.getSizesByShoesId(req.params.shoesId)
     .then((sizes) => {
       res.send({ sizes })
     })

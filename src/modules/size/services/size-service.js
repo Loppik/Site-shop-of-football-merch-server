@@ -1,5 +1,10 @@
 const sizeRequest = require('../db/size-db');
 
+const getSizesByShoesId = async shoesId => {
+  const sizes = await sizeRequest.getSizesByShoesId(shoesId);
+  return sizes.filter(size => size.count > 0);
+}
+
 const reduceCountOfSizesByOne = async (data) => {
   const count = await sizeRequest.getCountOfSizeByShoesId(data);
   console.log(data)
@@ -7,5 +12,6 @@ const reduceCountOfSizesByOne = async (data) => {
 };
 
 module.exports = {
+  getSizesByShoesId,
   reduceCountOfSizesByOne,
 }
