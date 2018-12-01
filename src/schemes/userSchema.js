@@ -4,7 +4,7 @@ const userSchema = new mongoose.Schema({
     login: String,
     password: String,
     name: String,
-    phone_number: Number,
+    phoneNumber: Number,
     address: String,
     email: String,
     admin: Boolean,
