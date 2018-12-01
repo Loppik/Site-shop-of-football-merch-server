@@ -5,6 +5,10 @@ const getUserById = (req, res) => {
     .then((user) => {
       res.send({
         login: user.login,
+        name: user.name,
+        phoneNumber: user.phoneNumber,
+        email: user.email,
+        address: user.address,
         admin: user.admin
       });
     })
