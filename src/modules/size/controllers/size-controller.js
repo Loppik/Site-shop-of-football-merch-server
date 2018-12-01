@@ -10,17 +10,6 @@ const getSizesByShoesId = (req, res) => {
     })
 };
 
-const reduceSizesCountByOne = (req, res) => {
-  sizeService.reduceCountOfSizesByOne(req.body)
-    .then((size) => {
-      res.send({})
-    })
-    .catch((err) => {
-      res.status(500).send({ err })
-    })
-}
-
 module.exports = {
   getSizesByShoesId,
-  reduceSizesCountByOne,
 };

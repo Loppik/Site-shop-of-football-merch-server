@@ -1,7 +1,7 @@
-const orderRequest = require('../db/order-db');
+const orderService = require('../service/order-service');
 
 const addOrder = (req, res) => {
-  orderRequest.addOrder(req.body)
+  orderService.addOrder(req.body)
     .then((order) => {
       res.send({});
     })

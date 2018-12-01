@@ -7,7 +7,6 @@ const getSizesByShoesId = async shoesId => {
 
 const reduceCountOfSizesByOne = async (data) => {
   const count = await sizeRequest.getCountOfSizeByShoesId(data);
-  console.log(data)
   return sizeRequest.setCountOfSize(data.shoesId, data.size, count - 1);
 };
 
