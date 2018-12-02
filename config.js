@@ -2,7 +2,7 @@ const env = process.env.NODE_ENV;
 
 const dev = {
   secret: 'QWERTYUIOPASDFGHJKLZXCVBNM',
-  accessTokenLifetime: '30m',
+  accessTokenLifetime: '1d',
   host: 'localhost',
   port: '8081',
   debug: true,
