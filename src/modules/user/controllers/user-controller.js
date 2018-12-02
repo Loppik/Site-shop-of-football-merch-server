@@ -17,6 +17,17 @@ const getUserById = (req, res) => {
     })
 };
 
+const updateUser = (req, res) => {
+  userRequest.updateUser(req.body)
+    .then(() => {
+      res.send({});
+    })
+    .catch((err) => {
+      res.status(500).send({ err })
+    })
+}
+
 module.exports = {
   getUserById,
+  updateUser,
 }
