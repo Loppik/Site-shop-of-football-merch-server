@@ -15,7 +15,7 @@ const isInvalidLoginData = (data) => {
     let err = areObjectFieldsAvailable(data);
     if (err) reject(err);
 
-    let err = isInvalidLogin(data.login);
+    err = isInvalidLogin(data.login);
     if (err) rej(err);
 
     err = isInvalidPassword(data.password);
