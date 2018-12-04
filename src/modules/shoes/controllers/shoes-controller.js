@@ -1,8 +1,9 @@
 const shoesRequest = require('../db/shoes-db');
+const shoesService = require('../services/shoes-service');
 
 
 const getAllShoesOfOneType = (req, res) => {
-  shoesRequest.getAllShoesOfOneType('FootballBoots')
+  shoesService.getAllShoesOfOneType(req.params.ctRouteName)
     .then((shoes) => {
       res.send({ shoes })
     })
