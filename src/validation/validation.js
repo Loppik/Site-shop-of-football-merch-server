@@ -57,11 +57,19 @@ const isInvalidAddress = (address) => {
   return false;
 }
 
+const isInvalidWishes = (wishes) => {
+  if (wishes.length > 100) {
+    return 'incorrect wishes length';
+  }
+  return false;
+};
+
 module.exports = {
   isInvalidLogin,
   isInvalidPassword,
   isInvalidPhoneNumber,
   isInvalidName,
   isInvalidEmail,
-  isInvalidAddress
+  isInvalidAddress,
+  isInvalidWishes,
 }
