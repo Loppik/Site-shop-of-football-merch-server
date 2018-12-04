@@ -64,6 +64,13 @@ const isInvalidWishes = (wishes) => {
   return false;
 };
 
+const isInvalidReview = (review) => {
+  if (review.length > 100) {
+    return 'incorrect review length';
+  }
+  return false;
+}
+
 module.exports = {
   isInvalidLogin,
   isInvalidPassword,
@@ -72,4 +79,5 @@ module.exports = {
   isInvalidEmail,
   isInvalidAddress,
   isInvalidWishes,
+  isInvalidReview,
 }
