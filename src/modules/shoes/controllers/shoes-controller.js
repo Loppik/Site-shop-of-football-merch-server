@@ -62,6 +62,16 @@ const getAllShoes = (req, res) => {
     })
 };
 
+const getAllShoesByRegExpName = (req, res) => {
+  shoesRequest.getAllShoesByRegExpName(new RegExp(req.params.search))
+    .then((shoes) => {
+      res.send({ shoes });
+    })
+    .catch((err) => {
+      res.status(500).send({ err });
+    })
+}
+
 
 module.exports = {
   getAllShoesOfOneType,
@@ -71,4 +81,5 @@ module.exports = {
   updateShoesById,
   addShoes,
   getAllShoes,
+  getAllShoesByRegExpName,
 }

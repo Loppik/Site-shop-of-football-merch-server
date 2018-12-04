@@ -12,6 +12,8 @@ const deleteShoesById = id => Shoes.deleteOne({ _id: id });
 
 const updateShoesById = shoes => Shoes.update({ _id: shoes._id }, { $set: { ...shoes } })
 
+const getAllShoesByRegExpName = regexp => Shoes.find({ name: { $regex: regexp, $options: 'i' } }); 
+
 module.exports = {
   getAllShoesOfOneType,
   addShoes,
@@ -19,4 +21,5 @@ module.exports = {
   getShoesById,
   deleteShoesById,
   updateShoesById,
+  getAllShoesByRegExpName,
 }
