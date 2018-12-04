@@ -1,57 +1,57 @@
-const isInvalidLogin = (data) => {
-  if (data.login.length < 3 || data.login.length > 15) {
+const isInvalidLogin = (login) => {
+  if (login.length < 3 || login.length > 15) {
     return 'incorrect login length';
   }
   const regexp = new RegExp('^[a-zA-Z0-9_]*$');
-  if (data.login.search(regexp) == -1) {
+  if (login.search(regexp) == -1) {
     return 'incorrect symbol in login';
   }
   return false;
 }
 
-const isInvalidPassword = (data) => {
-  if (data.password.length < 3 || data.password.length > 15) {
+const isInvalidPassword = (password) => {
+  if (password.length < 3 || password.length > 15) {
     return 'incorrect password length';
   }
   const regexp = new RegExp('^[a-zA-Z0-9_]*$');
-  if (data.password.search(regexp) == -1) {
+  if (password.search(regexp) == -1) {
     return 'incorrect symbol in password';
   }
   return false;
 }
 
-const isInvalidPhoneNumber = (data) => {
-  if (data.phoneNumber.toString().length != 7) {
+const isInvalidPhoneNumber = (phoneNumber) => {
+  if (phoneNumber.toString().length != 7) {
     return 'incorrect phone number length';
   } else {
-    if (isNaN(Number(data.phoneNumber))) {
+    if (isNaN(Number(phoneNumber))) {
       return 'incorrect phone number format';
     }
   }
   return false;
 }
 
-const isInvalidName = (data) => {
-  if (data.name.length < 3 || data.name.length > 255) {
+const isInvalidName = (name) => {
+  if (name.length < 3 || name.length > 255) {
     return 'incorrect name length';
   }
   const regexp = new RegExp('^[a-zA-Z]*$');
-  if (data.name.search(regexp) == -1) {
+  if (name.search(regexp) == -1) {
     return 'incorrect symbol in name';
   }
   return false;
 }
 
-const isInvalidEmail = (data) => {
+const isInvalidEmail = (email) => {
   const regexp = new RegExp('@');
-  if (data.email.match(regexp) == null) {
+  if (email.match(regexp) == null) {
     return 'no symbol @';
   }
   return false;
 }
 
-const isInvalidAddress = (data) => {
-  if (data.address.length < 5 || data.address.length > 255) {
+const isInvalidAddress = (address) => {
+  if (address.length < 5 || address.length > 255) {
     return 'incorrect address length';
   }
   return false;

@@ -15,10 +15,10 @@ const isInvalidLoginData = (data) => {
     let err = areObjectFieldsAvailable(data);
     if (err) reject(err);
 
-    let err = isInvalidLogin(data);
+    let err = isInvalidLogin(data.login);
     if (err) rej(err);
 
-    err = isInvalidPassword(data);
+    err = isInvalidPassword(data.password);
     if (err) rej(err);
 
     return resp(false);

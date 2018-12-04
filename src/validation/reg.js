@@ -24,24 +24,27 @@ const areLoginObjectFieldsAvailable = (data) => {
 
 const isInvalidRegData = (data) => {
   return new Promise((resp, rej) => {
-    let err = isInvalidLogin(data);
+    let err = areObjectFieldsAvailable(data);
+    if (err) reject(err);
+
+    let err = isInvalidLogin(data.login);
     if (err) rej(err);
 
-    err = isInvalidPassword(data);
+    err = isInvalidPassword(data.password);
     if (err) rej(err);
 
-    err = isInvalidPhoneNumber(data);
-    if (err) rej(err);
-
-
-    err = isInvalidName(data);
+    err = isInvalidPhoneNumber(data.phoneNumber);
     if (err) rej(err);
 
 
-    err = isInvalidEmail(data);
+    err = isInvalidName(data.name);
     if (err) rej(err);
 
-    err = isInvalidAddress(data);
+
+    err = isInvalidEmail(data.email);
+    if (err) rej(err);
+
+    err = isInvalidAddress(data.address);
     if (err) rej(err);
 
     return resp(false);

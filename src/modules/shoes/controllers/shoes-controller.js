@@ -2,7 +2,7 @@ const shoesRequest = require('../db/shoes-db');
 
 
 const getAllShoesOfOneType = (req, res) => {
-  shoesRequest.getAllShoesOfOneType('ForRun')
+  shoesRequest.getAllShoesOfOneType('FootballBoots')
     .then((shoes) => {
       res.send({ shoes })
     })
