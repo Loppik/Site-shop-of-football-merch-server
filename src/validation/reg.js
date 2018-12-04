@@ -1,6 +1,6 @@
 const { isInvalidLogin, isInvalidPassword, isInvalidPhoneNumber, isInvalidName, isInvalidEmail, isInvalidAddress } = require('./validation');
 
-const areLoginObjectFieldsAvailable = (data) => {
+const areRegObjectFieldsAvailable = (data) => {
   if (!data.hasOwnProperty('login')) {
     return 'no login field';
   }
@@ -24,7 +24,7 @@ const areLoginObjectFieldsAvailable = (data) => {
 
 const isInvalidRegData = (data) => {
   return new Promise((resp, rej) => {
-    let err = areObjectFieldsAvailable(data);
+    let err = areRegObjectFieldsAvailable(data);
     if (err) reject(err);
 
     err = isInvalidLogin(data.login);

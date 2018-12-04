@@ -12,7 +12,7 @@ const areLoginObjectFieldsAvailable = (data) => {
 
 const isInvalidLoginData = (data) => {
   return new Promise((resp, rej) => {
-    let err = areObjectFieldsAvailable(data);
+    let err = areLoginObjectFieldsAvailable(data);
     if (err) reject(err);
 
     err = isInvalidLogin(data.login);
