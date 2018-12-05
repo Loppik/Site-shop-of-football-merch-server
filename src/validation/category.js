@@ -9,7 +9,7 @@ const isInvalidCategoryName = (name) => {
   return false;
 }
 
-const areObjectFieldsAvailable = (data) => {
+const areObjectFieldsUnavailable = (data) => {
   if (!data.hasOwnProperty('name')) {
     return 'no name field';
   }
@@ -18,7 +18,7 @@ const areObjectFieldsAvailable = (data) => {
 
 const isInvalidCategory = (data) => {
   return new Promise((response, reject) => {
-    let err = areObjectFieldsAvailable(data);
+    let err = areObjectFieldsUnavailable(data);
     if (err) reject(err);
 
     err = isInvalidCategoryName(data.name);
@@ -30,6 +30,6 @@ const isInvalidCategory = (data) => {
 
 module.exports = {
   isInvalidCategoryName,
-  areObjectFieldsAvailable,
+  areObjectFieldsUnavailable,
   isInvalidCategory,
 }
