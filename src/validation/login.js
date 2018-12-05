@@ -1,6 +1,6 @@
 const { isInvalidLogin, isInvalidPassword } = require('./validation');
 
-const areLoginObjectFieldsAvailable = (data) => {
+const areLoginObjectFieldsUnavailable = (data) => {
   if (!data.hasOwnProperty('login')) {
     return 'no login field';
   }
@@ -12,7 +12,7 @@ const areLoginObjectFieldsAvailable = (data) => {
 
 const isInvalidLoginData = (data) => {
   return new Promise((resp, rej) => {
-    let err = areLoginObjectFieldsAvailable(data);
+    let err = areLoginObjectFieldsUnavailable(data);
     if (err) reject(err);
 
     err = isInvalidLogin(data.login);
@@ -26,5 +26,6 @@ const isInvalidLoginData = (data) => {
 }
 
 module.exports = {
-  isInvalidLoginData
+  isInvalidLoginData,
+  areLoginObjectFieldsUnavailable
 }
