@@ -1,5 +1,4 @@
 const assert = require('assert');
-const sinon = require('sinon');
 const validation = require('../../../../src/validation/category');
 
 describe('Тестирование валидации категории', () => {
