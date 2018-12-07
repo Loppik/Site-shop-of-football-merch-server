@@ -5,6 +5,7 @@ const shoesSchema = new mongoose.Schema({
     description: String,
     type: String,
     price: Number,
+    imageUrl: String,
   }, {
     timestamps: false
   });
