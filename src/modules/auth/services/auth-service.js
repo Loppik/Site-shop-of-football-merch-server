@@ -1,16 +1,16 @@
-const { findUserByLogin, insertUser } = require('../../user/db/user-db');
-const { updateRefreshToken } = require('../db/token-db');
+const userRequest = require('../../user/db/user-db');
+const tokenRequest = require('../db/token-db');
 const { isInvalidRegData } = require('../../../validation/reg');
-const { isInvalidLoginData } = require('../../../validation/login')
+const loginValidation = require('../../../validation/login')
 const bcrypt = require('bcrypt');
 const jwtService = require('../../../jwtService');
 
 const registration = (data) => {
   return isInvalidRegData(data).then(() => {
-    return findUserByLogin(data.login).then(async (user) => user ? (
+    return userRequest.findUserByLogin(data.login).then(async (user) => user ? (
       Promise.reject('This login already exist')
     ) : (
-        insertUser({ ...data, password: await bcrypt.hash(data.password, 10) })
+      userRequest.insertUser({ ...data, password: await bcrypt.hash(data.password, 10) })
       ));
   }, (err) => {
     return Promise.reject(err);
@@ -18,11 +18,11 @@ const registration = (data) => {
 };
 
 const login = (data) => {
-  return isInvalidLoginData(data).then(() => {
-    return findUserByLogin(data.login).then((user) => user ? (
+  return loginValidation.isInvalidLoginData(data).then(() => {
+    return userRequest.findUserByLogin(data.login).then((user) => user ? (
       bcrypt.compare(data.password, user.password).then((res) => res ? (
         jwtService.generateAcsRefTokens({ userId: user._id }).then(({ accessToken, refreshToken }) => {
-          return updateRefreshToken(user._id, refreshToken).then(res => ({ accessToken, refreshToken }));
+          return tokenRequest.updateRefreshToken(user._id, refreshToken).then(res => ({ accessToken, refreshToken }));
         })
       ) : (
           Promise.reject('Incorrect password')
