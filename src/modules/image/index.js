@@ -1,11 +1,20 @@
 const app = require('express')();
 const multer  = require('multer')
-const upload = multer({ dest: 'images/' })
 const imageController = require('./controllers/image-controller');
 
+const multerConf = {
+  storage: multer.diskStorage({
+    destination: 'images',
+    filename: function (req, file, next) {
+      const ext = file.originalname.split('.')[1];
+      next(null, file.originalname.split('.')[0] + '.' + ext);
+    }
+  }),
+}
+
 app.get(/.*/, imageController.getImage);
-app.post('/', upload.single('l4.docx'), (req, res, next) => {
-  console.log(req.file)
+app.post('/', multer(multerConf).any(), (req, res, next) => {
+  res.status(200).send({});
 });
 
 module.exports = app;
