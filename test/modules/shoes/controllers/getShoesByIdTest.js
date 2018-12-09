@@ -21,7 +21,7 @@ describe('Тестирование получения обуви', () => {
       type: 'fb',
     }
 
-    shoesRequestMock.expects('getShoesById').returns(Promise.resolve(shoes));
+    shoesRequestMock.expects('getShoesById').resolves(shoes);
 
     chai.request(server)
       .get('/shoes/' + shoesId)
@@ -37,7 +37,7 @@ describe('Тестирование получения обуви', () => {
   it('неуспешное получение всей обуви одного типа, ожидается объект ошибки', () => {
     const shoesId = '23feew4235';
 
-    shoesRequestMock.expects('getShoesById').returns(Promise.reject('db error'));
+    shoesRequestMock.expects('getShoesById').rejects('db error');
     chai.request(server)
       .get('/shoes/' + shoesId)
       .end((err, res) => {

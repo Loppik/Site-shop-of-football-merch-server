@@ -47,7 +47,8 @@ describe('Добавление отзыва', () => {
       reviewRequestMock.expects('addReview').returns(Promise.resolve(reviewOutput));
       const res = await reviewService.addReview(reviewInput);
       assert.deepEqual(res, reviewOutput);
+      userRequestMock.restore();
     })
-  })  
+  })
 })
 

@@ -26,7 +26,7 @@ describe('Тестирование получения всей обуви', () =
         type: 'forRun',
       }
     ];
-    shoesRequestMock.expects('getAllShoes').returns(Promise.resolve(shoes));
+    shoesRequestMock.expects('getAllShoes').resolves(shoes);
     chai.request(server)
       .get('/shoes/')
       .end((err, res) => {
@@ -39,7 +39,7 @@ describe('Тестирование получения всей обуви', () =
   it('неуспешное получение всей обуви, ожидается объект ошибки', () => {
     const type = 'fb';
     
-    shoesRequestMock.expects('getAllShoes').returns(Promise.reject('db error'));
+    shoesRequestMock.expects('getAllShoes').rejects('db error');
     chai.request(server)
       .get('/shoes/')
       .end((err, res) => {

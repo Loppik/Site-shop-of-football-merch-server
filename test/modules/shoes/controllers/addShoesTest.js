@@ -19,7 +19,7 @@ describe('Тестирование получения обуви', () => {
       type: 'fb',
     }
 
-    shoesRequestMock.expects('addShoes').returns(Promise.resolve(shoes));
+    shoesRequestMock.expects('addShoes').resolves(shoes);
 
     chai.request(server)
       .post('/shoes/')
@@ -30,7 +30,7 @@ describe('Тестирование получения обуви', () => {
   })
 
   it('неуспешное получение обуви, ожидается объект ошибки', () => {
-    shoesRequestMock.expects('addShoes').returns(Promise.reject('db error'));
+    shoesRequestMock.expects('addShoes').rejects('db error');
 
     chai.request(server)
       .post('/shoes/')

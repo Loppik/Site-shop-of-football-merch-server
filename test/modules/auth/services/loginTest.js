@@ -2,7 +2,7 @@ const assert = require('assert');
 const { login } = require('../../../../src/modules/auth/services/auth-service');
 
 describe('Тестирование авторизации (login())', () => {
-  describe('Неккоректные данные авторизации', () => {
+  describe('Неккоректные данные авторизации', async () => {
     it('логин длинной в 2 символа, ожидается строка "incorrect login length"', async () => {
       let data = { login: 'll', password: '123' };
       try {
@@ -15,7 +15,7 @@ describe('Тестирование авторизации (login())', () => {
   })
 
   it('успешная авторизация, ожидается объект с двумя токенами внутри', async () => {
-    let data = { login: 'test1', password: '123' };
+    let data = { login: 'ooo', password: '123' };
     let res = await login(data);
     if (res.accessToken && res.refreshToken) {
       assert.equal(true, true);

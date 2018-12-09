@@ -25,7 +25,7 @@ describe('Тестирование получения размеров обув�
         count: 4,
       }
     ];
-    sizeRequestMock.expects('getSizesByShoesId').returns(Promise.resolve(sizes));
+    sizeRequestMock.expects('getSizesByShoesId').resolves(sizes);
     chai.request(server)
       .get('/sizes/' + shoesId)
       .end((err, res) => {
@@ -41,7 +41,7 @@ describe('Тестирование получения размеров обув�
   it('неуспешное получение размеров обуви, ожидается объект ошибки', () => {
     const shoesId = 'wr235ewf';
     
-    sizeRequestMock.expects('getSizesByShoesId').returns(Promise.reject('db error'));
+    sizeRequestMock.expects('getSizesByShoesId').rejects('db error');
     chai.request(server)
       .get('/sizes/' + shoesId)
       .end((err, res) => {

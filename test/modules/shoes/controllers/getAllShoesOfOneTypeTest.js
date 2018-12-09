@@ -6,9 +6,9 @@ const expect = chai.expect;
 const should = chai.should();
 const server = require('../../../../src/index');
 
-const shoesRequest = require('../../../../src/modules/shoes/db/shoes-db');
+const shoesService = require('../../../../src/modules/shoes/services/shoes-service');
 
-const shoesRequestMock = sinon.mock(shoesRequest);
+const shoesServiceMock = sinon.mock(shoesService);
 
 describe('Тестирование получения всей обуви одного типа', () => {
   it('успешное получение всей обуви одного типа, ожидается массив обуви', () => {
@@ -27,9 +27,9 @@ describe('Тестирование получения всей обуви одн
         type,
       }
     ];
-    shoesRequestMock.expects('getAllShoesOfOneType').returns(Promise.resolve(shoes));
+    shoesServiceMock.expects('getAllShoesOfOneType').resolves(shoes);
     chai.request(server)
-      .get('/shoes/' + type)
+      .get('/shoes/ct/' + type)
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.have.property('shoes');
@@ -44,9 +44,9 @@ describe('Тестирование получения всей обуви одн
   it('неуспешное получение всей обуви одного типа, ожидается объект ошибки', () => {
     const type = 'fb';
     
-    shoesRequestMock.expects('getAllShoesOfOneType').returns(Promise.reject('db error'));
+    shoesServiceMock.expects('getAllShoesOfOneType').rejects('db error');
     chai.request(server)
-      .get('/shoes/' + type)
+      .get('/shoes/ct' + type)
       .end((err, res) => {
         res.should.have.status(500);
         res.body.should.have.property('err');

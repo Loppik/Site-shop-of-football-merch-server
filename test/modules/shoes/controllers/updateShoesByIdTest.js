@@ -20,7 +20,7 @@ describe('Тестирование изменения данных обуви', 
       type: 'fb',
     }
 
-    shoesRequestMock.expects('updateShoesById').returns(Promise.resolve(shoes));
+    shoesRequestMock.expects('updateShoesById').resolves(shoes);
 
     chai.request(server)
       .put('/shoes/')
@@ -31,7 +31,7 @@ describe('Тестирование изменения данных обуви', 
   })
 
   it('неуспешное изменение данных обуви, ожидается объект ошибки', () => {
-    shoesRequestMock.expects('updateShoesById').returns(Promise.reject('db error'));
+    shoesRequestMock.expects('updateShoesById').rejects('db error');
 
     chai.request(server)
       .put('/shoes/')
