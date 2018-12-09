@@ -5,6 +5,12 @@ const getImage = (req, res) => {
   res.sendFile(path.resolve(`images${req.path}`));
 };
 
+const loadImage = (req, res) => {
+  console.log("+")
+  console.log(req.file);
+}
+
 module.exports = {
   getImage,
+  loadImage,
 };
