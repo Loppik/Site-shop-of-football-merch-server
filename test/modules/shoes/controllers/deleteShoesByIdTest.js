@@ -12,36 +12,40 @@ const shoesRequest = require('../../../../src/modules/shoes/db/shoes-db');
 const shoesRequestMock = sinon.mock(shoesRequest);
 
 describe('Тестирование удаления обуви', () => {
-  it('успешное удаление обуви, ожидается пустой объект', (done) => {
-    const shoesId = '23feew4235';
-    const shoes = {
-      shoesId,
-      name: 'asdf',
-      description: 'asdfvd',
-      price: 123,
-      type: 'fb',
-    }
-
-    shoesRequestMock.expects('deleteShoesById').resolves(shoes);
-
-    chai.request(server)
-      .delete('/shoes/' + shoesId)
-      .end((err, res) => {
-        res.should.have.status(200);
-        expect(res.body).to.be.empty;
-        done();
-      })
+  describe('', () => {
+    it('успешное удаление обуви, ожидается пустой объект', (done) => {
+      const shoesId = '23feew4235';
+      const shoes = {
+        shoesId,
+        name: 'asdf',
+        description: 'asdfvd',
+        price: 123,
+        type: 'fb',
+      }
+  
+      shoesRequestMock.expects('deleteShoesById').resolves(shoes);
+  
+      chai.request(server)
+        .delete('/shoes/' + shoesId)
+        .end((err, res) => {
+          res.should.have.status(200);
+          expect(res.body).to.be.empty;
+          done();
+        })
+    })
   })
 
-  it('неуспешное удаление обуви, ожидается объект ошибки', (done) => {
-    const shoesId = '23feew4235';
-    shoesRequestMock.expects('deleteShoesById').rejects('db error');
-    chai.request(server)
-      .delete('/shoes/' + shoesId)
-      .end((err, res) => {
-        res.should.have.status(500);
-        res.body.should.have.property('err');
-        done();
-      })
+  describe('', () => {
+    it('неуспешное удаление обуви, ожидается объект ошибки', (done) => {
+      const shoesId = '23feew4235';
+      shoesRequestMock.expects('deleteShoesById').rejects('db error');
+      chai.request(server)
+        .delete('/shoes/' + shoesId)
+        .end((err, res) => {
+          res.should.have.status(500);
+          res.body.should.have.property('err');
+          done();
+        })
+    })
   })
 });

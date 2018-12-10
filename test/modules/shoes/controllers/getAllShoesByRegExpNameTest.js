@@ -10,9 +10,9 @@ const shoesRequest = require('../../../../src/modules/shoes/db/shoes-db');
 
 const shoesRequestMock = sinon.mock(shoesRequest);
 
-describe('Тестирование получения всей обуви', () => {
+describe('Тестирование получения всей обуви по регулярному выражению', () => {
   describe('', () => {
-    it('успешное получение всей обуви, ожидается массив обуви', () => {
+    it('успешное получение всей обуви по регулярному выражению, ожидается массив обуви', () => {
       const shoes = [
         {
           name: 'asdf',
@@ -27,9 +27,9 @@ describe('Тестирование получения всей обуви', () =
           type: 'forRun',
         }
       ];
-      shoesRequestMock.expects('getAllShoes').resolves(shoes);
+      shoesRequestMock.expects('getAllShoesByRegExpName').resolves(shoes);
       chai.request(server)
-        .get('/shoes/')
+        .get('/shoes/find/reg')
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.have.property('shoes');
@@ -39,12 +39,12 @@ describe('Тестирование получения всей обуви', () =
   })
 
   describe('', () => {
-    it('неуспешное получение всей обуви, ожидается объект ошибки', () => {
+    it('неуспешное получение всей обуви по регулярному выражению, ожидается объект ошибки', () => {
       const type = 'fb';
       
-      shoesRequestMock.expects('getAllShoes').rejects('db error');
+      shoesRequestMock.expects('getAllShoesByRegExpName').rejects('db error');
       chai.request(server)
-        .get('/shoes/')
+        .get('/shoes/find/reg')
         .end((err, res) => {
           res.should.have.status(500);
           res.body.should.have.property('err');

@@ -6,13 +6,13 @@ const expect = chai.expect;
 const should = chai.should();
 const server = require('../../../../src/index');
 
-const userRequest = require('../../../../src/modules/user/db/user-db');
+const userService = require('../../../../src/modules/user/services/user-service');
 
-const userRequestMock = sinon.mock(userRequest);
+const userServiceMock = sinon.mock(userService);
 
-describe('Тестирование получения пользователя', () => {
+describe('Тестирование обновления данных пользователя', () => {
   describe('', () => {
-    it('успешное получение пользователя, ожидается объект пользователя', () => {
+    it('успешное обновление данных пользователя, ожидается объект пользователя', () => {
       const userId = '23feew4235';
       const user = {
         userId,
@@ -20,10 +20,10 @@ describe('Тестирование получения пользователя',
         admin: false,
       }
   
-      userRequestMock.expects('getUserById').resolves(user);
+      userServiceMock.expects('updateUser').resolves(user);
   
       chai.request(server)
-        .get('/users/')
+        .put('/users/')
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.an('object');
@@ -36,12 +36,12 @@ describe('Тестирование получения пользователя',
   })
 
   describe('', () => {
-    it('неуспешное получение пользователя, ожидается объект ошибки', () => {
+    it('неуспешное обновление данных пользователя, ожидается объект ошибки', () => {
       const userId = '23feew4235';
   
-      userRequestMock.expects('getUserById').rejects('db error');
+      userServiceMock.expects('updateUser').rejects('db error');
       chai.request(server)
-        .get('/users/')
+        .put('/users/')
         .end((err, res) => {
           res.should.have.status(500);
           res.body.should.have.property('err');

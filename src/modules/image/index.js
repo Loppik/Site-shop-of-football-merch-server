@@ -13,8 +13,6 @@ const multerConf = {
 }
 
 app.get(/.*/, imageController.getImage);
-app.post('/', multer(multerConf).any(), (req, res, next) => {
-  res.status(200).send({});
-});
+app.post('/', multer(multerConf).any(), imageController.loadImage);
 
 module.exports = app;

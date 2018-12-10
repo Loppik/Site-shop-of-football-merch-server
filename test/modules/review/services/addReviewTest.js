@@ -10,8 +10,8 @@ const userRequestMock = sinon.mock(userRequest);
 const guestRequestMock = sinon.mock(guestRequest);
 const reviewRequestMock = sinon.mock(reviewRequest);
 
-describe('Добавление отзыва', () => {
-  describe('Добавление отзыва от гостя', () => {
+describe('Тестирование добавления отзыва', () => {
+  describe('Тестирование добавления отзыва от гостя', () => {
     it('Успешное добавление отзыва от гостя', async () => {
       const reviewInput = {}
       const guest = {
@@ -29,7 +29,7 @@ describe('Добавление отзыва', () => {
       assert.deepEqual(res, reviewOutput);
     })
   })
-  describe('Добавление отзыва от пользователя', () => {
+  describe('Тестирование добавления отзыва от пользователя', () => {
     it('Успешное добавление отзыва от пользователя', async () => {
       const reviewInput = {
         userId: 'se23afg',

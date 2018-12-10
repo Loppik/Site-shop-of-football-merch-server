@@ -24,7 +24,7 @@ const getCategory = (req, res) => {
 const addCategory = (req, res) => {
   categoryService.addCategory(req.body)
     .then((category) => {
-      res.send({});
+      res.send({ category });
     })
     .catch((err) => {
       res.status(500).send({ err });
@@ -37,14 +37,14 @@ const deleteCategory = (req, res) => {
       res.send({});
     })
     .catch((err) => {
-      res.status(200).send({ err })
+      res.status(500).send({ err })
     })
 };
 
 const updateCaregoryById = (req, res) => {
   categoryRequest.updateCategoryById(req.body)
     .then((category) => {
-      res.send({});
+      res.send({ category });
     })
     .catch((err) => {
       res.status(500).send({ err });
