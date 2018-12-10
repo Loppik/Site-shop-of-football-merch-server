@@ -6,7 +6,7 @@
   "scripts": {
     "start": "set NODE_ENV=dev&& nodemon ./src/ server server",
     "debug": "nodemon --inspect ./src/",
-    "test": "set NODE_ENV=test&& mocha test/modules/user --recursive --timeout 5000 --exit"
+    "test": "set NODE_ENV=test&& mocha test/modules/order --recursive --timeout 5000 --exit"
   },
   "author": "",
   "license": "ISC",
