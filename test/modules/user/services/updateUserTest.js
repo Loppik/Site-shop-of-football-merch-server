@@ -5,26 +5,14 @@ const userRequest = require('../../../../src/modules/user/db/user-db');
 
 const userRequestMock = sinon.mock(userRequest);
 
-describe('Тестирование обновления данных пользователя', () => {
-  it('успешное обновление данных пользователя, ожидается ************************', async () => {
-    const shoesId = 'asd32ffr4';
-    const sizes = [
-      {
-        shoesId,
-        size: '43',
-        count: 2
-      },
-      {
-        shoesId,
-        size: '42',
-        count: 4
-      }
-    ]
+describe('Тестирование сервиса обновления данных пользователя', () => {
+  it('успешное обновление данных пользователя, ожидается объект пользователя', async () => {
+    const user = { userId: 'fr34fsd', login: 'afgs', password: '234' }
     
-    userRequestMock.expects('updateUser').resolves(sizes);
-    userRequestMock.expects('getUserById').resolves(sizes);
+    userRequestMock.expects('updateUser').resolves({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 });
+    userRequestMock.expects('getUserById').resolves(user);
 
-    const res = await updateUser(shoesId);
-    assert.deepEqual(res, sizes);
+    const res = await updateUser({ login: 'afgs', password: '234' });
+    assert.deepEqual(res, user);
   })
 })

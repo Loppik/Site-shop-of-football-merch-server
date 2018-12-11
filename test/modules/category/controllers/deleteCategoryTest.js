@@ -11,7 +11,7 @@ const categoryRequest = require('../../../../src/modules/category/db/category-db
 const categoryRequestMock = sinon.mock(categoryRequest);
 
 const categoryId = '54fs32245';
-describe('Тестирование удаления категории', () => {
+describe('Тестирование контроллера удаления категории', () => {
   describe('', () => {
     it('успешное удаление категории, ожидается пустой объект', () => {
       const category = {

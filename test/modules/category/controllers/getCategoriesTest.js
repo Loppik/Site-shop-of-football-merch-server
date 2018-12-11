@@ -10,7 +10,7 @@ const categoryRequest = require('../../../../src/modules/category/db/category-db
 
 const categoryRequestMock = sinon.mock(categoryRequest);
 
-describe('Тестирование получения всех категорий', () => {
+describe('Тестирование контроллера получения всех категорий', () => {
   describe('', () => {
     it('успешное получение всех категорий, ожидается массив категорий', () => {
       const categories = [

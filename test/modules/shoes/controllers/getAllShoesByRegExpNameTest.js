@@ -10,7 +10,7 @@ const shoesRequest = require('../../../../src/modules/shoes/db/shoes-db');
 
 const shoesRequestMock = sinon.mock(shoesRequest);
 
-describe('Тестирование получения всей обуви по регулярному выражению', () => {
+describe('Тестирование контроллера получения всей обуви по регулярному выражению', () => {
   describe('', () => {
     it('успешное получение всей обуви по регулярному выражению, ожидается массив обуви', () => {
       const shoes = [

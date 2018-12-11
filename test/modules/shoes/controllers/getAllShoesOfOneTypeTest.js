@@ -10,7 +10,7 @@ const shoesService = require('../../../../src/modules/shoes/services/shoes-servi
 
 const shoesServiceMock = sinon.mock(shoesService);
 
-describe('Тестирование получения всей обуви одного типа', () => {
+describe('Тестирование контроллера получения всей обуви одного типа', () => {
   describe('', () => {
     it('успешное получение всей обуви одного типа, ожидается массив обуви', () => {
       const type = 'fb';

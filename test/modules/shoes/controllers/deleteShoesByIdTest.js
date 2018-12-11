@@ -11,7 +11,7 @@ const shoesRequest = require('../../../../src/modules/shoes/db/shoes-db');
 
 const shoesRequestMock = sinon.mock(shoesRequest);
 
-describe('Тестирование удаления обуви', () => {
+describe('Тестирование контроллера удаления обуви', () => {
   describe('', () => {
     it('успешное удаление обуви, ожидается пустой объект', (done) => {
       const shoesId = '23feew4235';

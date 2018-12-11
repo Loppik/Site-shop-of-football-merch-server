@@ -10,7 +10,7 @@ const reviewService = require('../../../../src/modules/review/services/review-se
 
 const reviewServiceMock = sinon.mock(reviewService);
 
-describe('Тестирование добавления отзыва', () => {
+describe('Тестирование контроллера добавления отзыва', () => {
   describe('', () => {
     it('успешное добавление отзыва, ожидается объект отзыва', () => {
       const review = {

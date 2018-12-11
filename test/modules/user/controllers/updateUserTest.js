@@ -10,7 +10,7 @@ const userService = require('../../../../src/modules/user/services/user-service'
 
 const userServiceMock = sinon.mock(userService);
 
-describe('Тестирование обновления данных пользователя', () => {
+describe('Тестирование контроллера обновления данных пользователя', () => {
   describe('', () => {
     it('успешное обновление данных пользователя, ожидается объект пользователя', () => {
       const userId = '23feew4235';

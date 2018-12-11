@@ -10,7 +10,7 @@ const userRequestMock = sinon.mock(userRequest);
 const guestRequestMock = sinon.mock(guestRequest);
 const reviewRequestMock = sinon.mock(reviewRequest);
 
-describe('Тестирование добавления отзыва', () => {
+describe('Тестирование сервиса добавления отзыва', () => {
   describe('Тестирование добавления отзыва от гостя', () => {
     it('Успешное добавление отзыва от гостя', async () => {
       const reviewInput = {}

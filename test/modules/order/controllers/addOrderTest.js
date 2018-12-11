@@ -10,7 +10,7 @@ const orderService = require('../../../../src/modules/order/service/order-servic
 
 const orderServiceMock = sinon.mock(orderService);
 
-describe('Тестирование добавления заказа', () => {
+describe('Тестирование контроллера добавления заказа', () => {
   describe('', () => {
     it('успешное добавление заказа, ожидается объект заказа', () => {
       const order = {

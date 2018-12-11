@@ -10,7 +10,7 @@ const orderRequest = require('../../../../src/modules/order/db/order-db');
 
 const orderRequestMock = sinon.mock(orderRequest);
 
-describe('Тестирование получение заказов пользователя', () => {
+describe('Тестирование контроллера получение заказов пользователя', () => {
   describe('', () => {
     it('успешное получение заказов пользователя, ожидается массив заказов', () => {
       const orders = [
@@ -26,7 +26,7 @@ describe('Тестирование получение заказов польз�
   
       orderRequestMock.expects('getOrdersByUserId').resolves(orders);
       chai.request(server)
-        .post('/orders')
+        .get('/orders')
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.an('array');
@@ -43,7 +43,7 @@ describe('Тестирование получение заказов польз�
     it('неуспешное получение заказов пользователя, ожидается объект ошибки', () => {
       orderRequestMock.expects('getOrdersByUserId').rejects('db error');
       chai.request(server)
-        .post('/orders')
+        .get('/orders')
         .end((err, res) => {
           res.should.have.status(500);
           res.body.should.have.property('err');

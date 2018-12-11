@@ -10,7 +10,7 @@ const sizeService = require('../../../../src/modules/size/services/size-service'
 
 const sizeServiceMock = sinon.mock(sizeService);
 
-describe('Тестирование получения размеров обуви', () => {
+describe('Тестирование контроллера получения размеров обуви', () => {
   describe('', () => {
     it('успешное получение размеров обуви, ожидается массив размеров', () => {
       const shoesId = 'wr235ewf';

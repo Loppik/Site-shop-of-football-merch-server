@@ -10,7 +10,7 @@ const reviewRequest = require('../../../../src/modules/review/db/review-db');
 
 const reviewRequestMock = sinon.mock(reviewRequest);
 const shoesId = 'r324ewf';
-describe('Тестирование получения отзывов', () => {
+describe('Тестирование контроллера получения отзывов', () => {
   describe('', () => {
     it('успешное получение отзывов, ожидается массив отзывов', () => {
       const reviews = [

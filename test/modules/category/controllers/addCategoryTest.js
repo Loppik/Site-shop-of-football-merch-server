@@ -10,7 +10,7 @@ const categoryService = require('../../../../src/modules/category/services/categ
 
 const categoryServiceMock = sinon.mock(categoryService);
 
-describe('Тестирование добавления категории', () => {
+describe('Тестирование контроллера добавления категории', () => {
   describe('', () => {
     it('успешное добавление категории, ожидается объект категории', () => {
       const category = {
@@ -20,7 +20,7 @@ describe('Тестирование добавления категории', () 
   
       categoryServiceMock.expects('addCategory').resolves(category);
       chai.request(server)
-        .get('/categories/')
+        .post('/categories/')
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.have.property('category');
@@ -38,7 +38,7 @@ describe('Тестирование добавления категории', () 
     it('неуспешное добавление категории, ожидается объект ошибки', () => {
       categoryServiceMock.expects('addCategory').rejects('db error');
       chai.request(server)
-        .get('/categories/')
+        .post('/categories/')
         .end((err, res) => {
           res.should.have.status(500);
           res.body.should.have.property('err');
@@ -46,4 +46,5 @@ describe('Тестирование добавления категории', () 
     })
   })
 });
+
 

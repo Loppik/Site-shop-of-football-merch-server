@@ -10,7 +10,7 @@ const userRequest = require('../../../../src/modules/user/db/user-db');
 
 const userRequestMock = sinon.mock(userRequest);
 
-describe('Тестирование получения пользователя', () => {
+describe('Тестирование контроллера получения пользователя', () => {
   describe('', () => {
     it('успешное получение пользователя, ожидается объект пользователя', () => {
       const userId = '23feew4235';
@@ -46,6 +46,7 @@ describe('Тестирование получения пользователя',
           res.should.have.status(500);
           res.body.should.have.property('err');
         })
+      userRequestMock.restore();
     })
   })
 });

@@ -7,7 +7,7 @@ const categoryRequest = require('../../../../src/modules/category/db/category-db
 const categoryRequestMock = sinon.mock(categoryRequest);
 const categoryValidationMock = sinon.mock(categoryValidation);
 
-describe('Тестирование добавления новой категории', () => {
+describe('Тестирование сервиса добавления новой категории', () => {
   it('успешное добавление новой категории, ожидается объект', async () => {
     const category = {
       name: 'catName'
