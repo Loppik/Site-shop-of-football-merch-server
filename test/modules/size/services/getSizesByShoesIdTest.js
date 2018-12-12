@@ -43,4 +43,15 @@ describe('Тестирование сервиса получения разме�
     const res = await getSizesByShoesId(shoesId);
     assert.deepEqual(res, outputSizes);
   })
+
+  it('нет размеров обуви, ожидается пустой массив размеров', async () => {
+    const shoesId = 'asd32ffr4';
+    const sizes = []
+    const outputSizes = []
+    
+    sizeRequestMock.expects('getSizesByShoesId').resolves(sizes);
+
+    const res = await getSizesByShoesId(shoesId);
+    assert.deepEqual(res, outputSizes);
+  })
 })

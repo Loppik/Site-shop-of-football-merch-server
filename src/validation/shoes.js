@@ -10,7 +10,7 @@ const isInvalidShoesName = (name) => {
 }
 
 const isInvalidShoesDescription = (description) => {
-  if (description.length < 3 || description.length > 20) {
+  if (description.length < 3 || description.length > 40) {
     return 'incorrect description length';
   }
   return false;

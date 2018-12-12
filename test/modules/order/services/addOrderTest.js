@@ -26,4 +26,19 @@ describe('Тестирование сервиса добавления зака�
     const res = await addOrder(order);
     assert.deepEqual(res, order);
   })
+
+  it('в заказе нет обуви, ожидается объект ', async () => {
+    const order = {
+      userId: 'asd32ffr4',
+      info: 'asdfvd',
+      shoes: [],
+    }
+    
+    sizeServiceMock.expects('reduceCountOfSizesByOne').resolves(2);
+
+    orderRequestMock.expects('addOrder').resolves(order);
+
+    const res = await addOrder(order);
+    assert.deepEqual(res, order);
+  })
 })

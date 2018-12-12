@@ -1,12 +1,12 @@
 const userRequest = require('../../user/db/user-db');
 const tokenRequest = require('../db/token-db');
-const { isInvalidRegData } = require('../../../validation/reg');
+const regValidation = require('../../../validation/reg');
 const loginValidation = require('../../../validation/login')
 const bcrypt = require('bcrypt');
 const jwtService = require('../../../jwtService');
 
 const registration = (data) => {
-  return isInvalidRegData(data).then(() => {
+  return regValidation.isInvalidRegData(data).then(() => {
     return userRequest.findUserByLogin(data.login).then(async (user) => user ? (
       Promise.reject('This login already exist')
     ) : (
@@ -33,7 +33,6 @@ const login = (data) => {
   }, (err) => {
     return Promise.reject(err);
   })
-
 };
 
 module.exports = {
