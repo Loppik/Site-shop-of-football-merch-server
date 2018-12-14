@@ -1,7 +1,7 @@
 const assert = require('assert');
 const { isInvalidLogin } = require('../../src/validation/validation');
 
-describe.only('Тестирование правильности введеного логина (isInvalidLogin())', () => {
+describe('Тестирование правильности введеного логина (isInvalidLogin())', () => {
   describe('Успешная валидация логина, ожидается false', () => {
     it('логин с заглавной буквы', () => {
       const login = 'Loppik';
