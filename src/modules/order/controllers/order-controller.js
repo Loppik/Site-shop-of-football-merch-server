@@ -21,7 +21,18 @@ const getOrdersByUserId = (req, res) => {
     })
 }
 
+const getOrders = (req, res) => {
+  orderRequest.getOrders()
+    .then((orders) => {
+      res.send(orders);
+    })
+    .catch((err) => {
+      res.status(500).send({ err });
+    })
+}
+
 module.exports = {
   addOrder,
   getOrdersByUserId,
+  getOrders,
 }
