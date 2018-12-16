@@ -2,8 +2,8 @@ const isInvalidLogin = (login) => {
   if (login.length < 3 || login.length > 15) {
     return 'incorrect login length';
   }
-  const regexp = new RegExp('^[a-zA-Z0-9_]*$');
-  if (login.search(regexp) == -1) {
+  const regexp = /^[a-zA-Z0-9_]*$/
+  if (!regexp.test(login)) {
     return 'incorrect symbol in login';
   }
   return false;
@@ -13,8 +13,8 @@ const isInvalidPassword = (password) => {
   if (password.length < 3 || password.length > 15) {
     return 'incorrect password length';
   }
-  const regexp = new RegExp('^[a-zA-Z0-9_]*$');
-  if (password.search(regexp) == -1) {
+  const regexp = /^[a-zA-Z0-9_]*$/
+  if (!regexp.test(password)) {
     return 'incorrect symbol in password';
   }
   return false;
@@ -35,16 +35,16 @@ const isInvalidName = (name) => {
   if (name.length < 3 || name.length > 255) {
     return 'incorrect name length';
   }
-  const regexp = new RegExp('^[a-zA-Z]*$');
-  if (name.search(regexp) == -1) {
+  const regexp = /^[a-zA-Z]*$/
+  if (!regexp.test(name)) {
     return 'incorrect symbol in name';
   }
   return false;
 }
 
 const isInvalidEmail = (email) => {
-  const regexp = new RegExp('@');
-  if (email.match(regexp) == null) {
+  const regexp = /@/
+  if (!regexp.test(email)) {
     return 'no symbol @';
   }
   return false;
