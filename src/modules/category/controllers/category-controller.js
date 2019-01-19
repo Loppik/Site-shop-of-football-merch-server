@@ -4,7 +4,7 @@ const categoryRequest = require('../db/category-db');
 const getCategories = (req, res) => {
   categoryRequest.getCategories()
     .then((categories) => {
-      res.send({ categories });
+      res.send(categories);
     })
     .catch((err) => {
       res.status(500).send({ err });
