@@ -1,4 +1,5 @@
-const env = process.env.NODE_ENV || 'prod';
+// const env = process.env.NODE_ENV || 'prod';
+const env = 'prod';
 
 const dev = {
   secret: 'QWERTYUIOPASDFGHJKLZXCVBNM',
