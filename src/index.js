@@ -22,7 +22,7 @@ if (app.get('env') == 'dev') {
 
 app.use(routes);
 
-app.listen(config.port, () => {
+app.listen(process.env.PORT || config.port, () => {
   console.log(`listening on http://${config.host}:${config.port}`);
 });
 
