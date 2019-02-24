@@ -25,5 +25,6 @@ app.use('/sizes', require('./size'));
 app.use('/images', require('./image'));
 app.use('/users', require('./user'));
 app.use('/orders', require('./order'));
+app.use('/access', require('./access'));
 
 module.exports = app;
